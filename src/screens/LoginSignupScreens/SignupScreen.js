@@ -4,21 +4,36 @@ import login from "../../../assets/login.jpg"
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { btn } from "../../global/style"
 
-export const LoginScreen = () => {
+export const SignupScreen = ({navigation}) => {
 
     const [emailfocus, setEmailFocus]=useState(false);
     const [passwordfocus, setPassordFocus]=useState(false);
     const [showpassword, setShowPassword]=useState(false);
+    const [userfocus, setUserFocus]=useState(false);
 
     return (
         <View style={styles.container}>
-            <Text style={styles.head}>Sign out</Text>
+            <Text style={styles.head}>Sign up</Text>
             <View style={styles.inputbox}>
-                <AntDesign name="user" size={24} color={emailfocus===true?"red":"black"} />
+                <AntDesign name="user" size={24} color={userfocus===true?"red":"black"} />
+                <TextInput style={styles.input} placeholder='User Name' 
+                    onFocus={()=>{
+                        setUserFocus(true)
+                        setEmailFocus(false)
+                        setPassordFocus(false)
+                        setShowPassword(false)
+                    }}
+                ></TextInput>
+            </View>
+
+            <View style={styles.inputbox}>
+                <MaterialCommunityIcons name="email-outline" size={24} color={emailfocus===true?"red":"black"}/>
                 <TextInput style={styles.input} placeholder='Email' 
                     onFocus={()=>{
+                        setUserFocus(false)
                         setEmailFocus(true)
                         setPassordFocus(false)
                         setShowPassword(false)
@@ -29,6 +44,7 @@ export const LoginScreen = () => {
             <Feather name="lock" size={24} color={passwordfocus===true?"red":"black"} />
                 <TextInput style={styles.input} placeholder='Password'
                 onFocus={()=>{
+                    setUserFocus(false)
                     setEmailFocus(false)
                     setPassordFocus(true)
                 }}
@@ -45,7 +61,9 @@ export const LoginScreen = () => {
             </TouchableOpacity>
 
             <Text style={{color:"grey"}}>Forgot Password </Text>
-            <Text style={{color:"#E9A11A", marginTop:10}}>New here ? Sign up</Text>
+            <Text style={{color:"#E9A11A", marginTop:10}}>Already have an account?
+            <Text style={{color:"black", marginTop:10}} onPress={()=>navigation.navigate('login')}> Login in</Text>
+            </Text>
 
         </View>
     )
@@ -61,10 +79,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     head: {
-        fontSize: 20,
+        fontSize: 25,
         color: "#E9A11A",
         textAlign: "center",
-        marginVertical: 10,
+        marginVertical: 40,
     },
     inputbox: {
         flexDirection: "row",
@@ -100,4 +118,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default LoginScreen
+export default SignupScreen

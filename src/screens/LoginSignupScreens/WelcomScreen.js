@@ -4,10 +4,10 @@ import logo from "../../../assets/logo.png"
 import bg from "../../../assets/bg.jpg"
 import { colors, hr80 } from "../../global/style"
 
-export const WelcomScreen = () => {
+export const WelcomScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <ImageBackground source={bg} resizeMode="cover" blurRadius={2} style={styles.image}>
+      <ImageBackground source={bg} resizeMode="cover" blurRadius={1.5} style={styles.image}>
         <View style={styles.content}>
           <Text style={styles.title}>Welcome to Foodie</Text>
           {/* <View style={styles.logobox}>
@@ -15,9 +15,8 @@ export const WelcomScreen = () => {
         </View> */}
           {/* <View style={hr80}/> */}
           <Text style={styles.text}>Find the best food at lowest prices</Text>
-          {/* <View style={hr80}/> */}
           <View style={styles.btnout}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate('login')}>
               <Text style={styles.btn}>Get Started</Text>
             </TouchableOpacity>
           </View>
@@ -58,7 +57,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     fontSize: 18,
     width: "80%",
-    color: "white",
+    color: "black",
     textAlign: "center",
   },
   btnout: {

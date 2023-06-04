@@ -6,7 +6,7 @@ import { Feather } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
 import { btn } from "../../global/style"
 
-export const LoginScreen = () => {
+export const LoginScreen = ({navigation}) => {
 
     const [emailfocus, setEmailFocus]=useState(false);
     const [passwordfocus, setPassordFocus]=useState(false);
@@ -14,7 +14,7 @@ export const LoginScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.head}>Sign in</Text>
+            <Text style={styles.head}>Log in</Text>
             <View style={styles.inputbox}>
                 <AntDesign name="user" size={24} color={emailfocus===true?"red":"black"} />
                 <TextInput style={styles.input} placeholder='Email' 
@@ -41,11 +41,13 @@ export const LoginScreen = () => {
             </View>
 
             <TouchableOpacity  style={styles.btn}>
-              <Text style={{color:"white", fontSize:18}} >Log in</Text>
+              <Text style={{color:"white", fontSize:18}} >Register</Text>
             </TouchableOpacity>
 
             <Text style={{color:"grey"}}>Forgot Password </Text>
-            <Text style={{color:"#E9A11A", marginTop:10}}>New here ? Sign up</Text>
+            <Text style={{color:"#E9A11A", marginTop:10}}>New here?
+            <Text style={{color:"black", marginTop:10}} onPress={()=>navigation.navigate('signup')}> Sign up</Text>
+            </Text>
 
         </View>
     )
@@ -61,10 +63,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     head: {
-        fontSize: 20,
+        fontSize: 25,
         color: "#E9A11A",
         textAlign: "center",
-        marginVertical: 10,
+        marginVertical: 40,
     },
     inputbox: {
         flexDirection: "row",
