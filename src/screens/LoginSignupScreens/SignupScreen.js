@@ -13,6 +13,7 @@ export const SignupScreen = ({navigation}) => {
     const [passwordfocus, setPassordFocus]=useState(false);
     const [showpassword, setShowPassword]=useState(false);
     const [userfocus, setUserFocus]=useState(false);
+    const [phonefocus, setPhoneFocus]=useState(false);
 
     return (
         <View style={styles.container}>
@@ -23,18 +24,31 @@ export const SignupScreen = ({navigation}) => {
                     onFocus={()=>{
                         setUserFocus(true)
                         setEmailFocus(false)
+                        setPhoneFocus(false)
                         setPassordFocus(false)
                         setShowPassword(false)
                     }}
                 ></TextInput>
             </View>
-
             <View style={styles.inputbox}>
                 <MaterialCommunityIcons name="email-outline" size={24} color={emailfocus===true?"red":"black"}/>
                 <TextInput style={styles.input} placeholder='Email' 
                     onFocus={()=>{
                         setUserFocus(false)
                         setEmailFocus(true)
+                        setPhoneFocus(false)
+                        setPassordFocus(false)
+                        setShowPassword(false)
+                    }}
+                ></TextInput>
+            </View>
+            <View style={styles.inputbox}>
+            <Feather name="phone-call" size={24} color={phonefocus===true?"red":"black"}/>
+                <TextInput style={styles.input} placeholder='Phone Number' 
+                    onFocus={()=>{
+                        setUserFocus(false)
+                        setEmailFocus(true)
+                        setPhoneFocus(true)
                         setPassordFocus(false)
                         setShowPassword(false)
                     }}
@@ -46,6 +60,7 @@ export const SignupScreen = ({navigation}) => {
                 onFocus={()=>{
                     setUserFocus(false)
                     setEmailFocus(false)
+                    setPhoneFocus(false)
                     setPassordFocus(true)
                 }}
                 secureTextEntry={showpassword==false?true:false}
@@ -62,7 +77,7 @@ export const SignupScreen = ({navigation}) => {
 
             <Text style={{color:"grey"}}>Forgot Password </Text>
             <Text style={{color:"#E9A11A", marginTop:10}}>Already have an account?
-            <Text style={{color:"black", marginTop:10}} onPress={()=>navigation.navigate('login')}> Login in</Text>
+            <Text style={{color:"black", marginTop:10}} onPress={()=>navigation.navigate('login')}> Login</Text>
             </Text>
 
         </View>
