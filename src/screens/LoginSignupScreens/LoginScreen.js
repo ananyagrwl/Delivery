@@ -40,7 +40,7 @@ export const LoginScreen = ({navigation}) => {
                 }}></Octicons>
             </View>
 
-            <TouchableOpacity  style={styles.btn}>
+            <TouchableOpacity  style={styles.btn} onPress={()=>navigation.navigate('home')}>
               <Text style={{color:"white", fontSize:18}} >Register</Text>
             </TouchableOpacity>
 

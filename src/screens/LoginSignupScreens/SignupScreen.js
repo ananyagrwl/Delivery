@@ -71,7 +71,7 @@ export const SignupScreen = ({navigation}) => {
                 }}></Octicons>
             </View>
 
-            <TouchableOpacity  style={styles.btn}>
+            <TouchableOpacity  style={styles.btn}> onPress={()=>navigation.navigate('home')}
               <Text style={{color:"white", fontSize:18}} >Log in</Text>
             </TouchableOpacity>
 
